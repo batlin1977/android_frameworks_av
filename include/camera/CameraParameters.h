@@ -77,6 +77,11 @@ public:
     void getPreviewSize(int *width, int *height) const;
     void getSupportedPreviewSizes(Vector<Size> &sizes) const;
 
+#ifdef HTC_CAMERA_HARDWARE
+    void getBrightnessLumaTargetSet(int *magic, int *sauce) const;
+    void getRawSize(int *magic, int *sauce) const;
+#endif
+
     // Set the dimensions in pixels to the given width and height
     // for video frames. The given width and height must be one
     // of the supported dimensions returned from
@@ -573,8 +578,10 @@ public:
     static const char KEY_FULL_VIDEO_SNAP_SUPPORTED[];
 
 #ifdef QCOM_HARDWARE
+#ifndef HAVE_ISO
     static const char KEY_ISO_MODE[];
     static const char KEY_SUPPORTED_ISO_MODES[];
+#endif
     static const char KEY_LENSSHADE[] ;
     static const char KEY_SUPPORTED_LENSSHADE_MODES[] ;
 
